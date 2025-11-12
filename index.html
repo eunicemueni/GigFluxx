@@ -6,17 +6,17 @@
   <title>Gigflux</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-storage-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
   <style>
     body { font-family: 'Poppins', sans-serif; background-color: #1a1424; color: white; scroll-behavior: smooth; }
-    .btn { background-color: #D4AF37; color: black; padding: 0.5rem 1rem; border-radius: 0.5rem; font-weight: 600; transition: all 0.3s; cursor: pointer; display: inline-block; text-align: center; }
+    .btn { background-color: #D4AF37; color: black; padding: 0.6rem 1.2rem; border-radius: 0.5rem; font-weight: 600; transition: all 0.3s; cursor: pointer; display: inline-block; text-align: center; }
     .btn:hover { transform: scale(1.05); box-shadow: 0 0 20px #D4AF37; }
     .section-title { color: #14b8a6; }
     nav a { transition: color 0.3s; }
     nav a:hover { color: #D4AF37; }
+    .faq-question { font-weight: 600; margin-top: 1rem; cursor: pointer; }
+    .faq-answer { display: none; margin-left: 1rem; margin-top: 0.5rem; }
+    .partners img { max-width: 120px; opacity: 0.8; transition: opacity 0.3s; }
+    .partners img:hover { opacity: 1; }
   </style>
 </head>
 <body>
@@ -30,7 +30,9 @@
         <a href="#services">Services</a>
         <a href="#process">Process</a>
         <a href="#team">Team</a>
+        <a href="#clients">Clients</a>
         <a href="#testimonials">Testimonials</a>
+        <a href="#faq">FAQ</a>
         <a href="#contact" class="btn">Contact</a>
       </div>
       <div class="md:hidden">
@@ -45,15 +47,17 @@
     <a href="#services" class="block">Services</a>
     <a href="#process" class="block">Process</a>
     <a href="#team" class="block">Team</a>
+    <a href="#clients" class="block">Clients</a>
     <a href="#testimonials" class="block">Testimonials</a>
+    <a href="#faq" class="block">FAQ</a>
     <a href="#contact" class="block btn">Contact</a>
   </div>
 
   <!-- Hero Section -->
   <section class="text-center py-32 px-6 bg-gradient-to-b from-[#1a1424] to-[#11101b]">
-    <h1 class="text-5xl md:text-6xl font-bold text-teal-400 mb-6 animate-fade-in">We are Gigflux</h1>
-    <p class="text-xl md:text-2xl mb-8 animate-fade-in delay-200">Empowering businesses and professionals worldwide through strategic workforce solutions and global partnerships.</p>
-    <div class="space-x-4 animate-fade-in delay-400">
+    <h1 class="text-5xl md:text-6xl font-bold text-teal-400 mb-6">We are Gigflux</h1>
+    <p class="text-xl md:text-2xl mb-8">Empowering businesses and professionals worldwide through strategic workforce solutions and global partnerships.</p>
+    <div class="space-x-4">
       <a href="#services" class="btn">Explore Opportunities</a>
       <a href="#contact" class="btn">Join Our Network</a>
     </div>
@@ -62,8 +66,8 @@
   <!-- About Section -->
   <section id="about" class="max-w-5xl mx-auto px-6 py-20">
     <h2 class="text-4xl font-bold mb-6 section-title">About Us</h2>
-    <p class="mb-4">At Gigflux, we bridge the gap between skilled professionals and organizations seeking excellence. Our mission is to deliver strategic, scalable, and reliable solutions that empower growth, optimize operations, and foster meaningful collaborations across industries.</p>
-    <p>With a global presence spanning Africa, Europe, Asia, and North America, we combine expertise and insight to connect talent with the right opportunities, wherever they are needed.</p>
+    <p class="mb-4">Gigflux is a global consultancy and workforce solutions agency connecting professionals and organizations for strategic growth. Our mission is to empower businesses by providing reliable, scalable, and results-driven services across industries.</p>
+    <p class="mb-4">We operate in Africa, Europe, Asia, and North America, ensuring that businesses and talent are matched efficiently for maximum impact.</p>
   </section>
 
   <!-- Services Section -->
@@ -106,8 +110,8 @@
     <h2 class="text-4xl font-bold mb-8 section-title">How We Work</h2>
     <ol class="list-decimal list-inside space-y-4">
       <li><strong>Onboarding:</strong> Talent and organizational partners join our network.</li>
-      <li><strong>Strategic Matching:</strong> Our team aligns opportunities with the right expertise.</li>
-      <li><strong>Execution & Growth:</strong> Projects are delivered with oversight, ensuring success and lasting impact.</li>
+      <li><strong>Strategic Matching:</strong> Opportunities are aligned with the right expertise.</li>
+      <li><strong>Execution & Growth:</strong> Projects are delivered with oversight for measurable success.</li>
     </ol>
   </section>
 
@@ -135,6 +139,17 @@
         <h3 class="text-xl font-semibold">Jacob Noah</h3>
         <p class="italic">Operations Lead — North America</p>
       </div>
+    </div>
+  </section>
+
+  <!-- Clients / Partners -->
+  <section id="clients" class="max-w-5xl mx-auto px-6 py-20">
+    <h2 class="text-4xl font-bold mb-8 section-title">Our Clients & Partners</h2>
+    <div class="flex flex-wrap justify-center items-center gap-12 partners">
+      <img src="https://via.placeholder.com/120x60?text=Kairah+Studios" alt="Kairah Studios">
+      <img src="https://via.placeholder.com/120x60?text=Company+X" alt="Company X">
+      <img src="https://via.placeholder.com/120x60?text=GlobalCorp" alt="GlobalCorp">
+      <img src="https://via.placeholder.com/120x60?text=Enterprise+Y" alt="Enterprise Y">
     </div>
   </section>
 
@@ -169,11 +184,31 @@
     </div>
   </section>
 
+  <!-- FAQ -->
+  <section id="faq" class="max-w-5xl mx-auto px-6 py-20">
+    <h2 class="text-4xl font-bold mb-8 section-title">FAQ</h2>
+    <div>
+      <div class="faq-item">
+        <p class="faq-question">How do we engage Gigflux for a project?</p>
+        <p class="faq-answer">Contact us via email or our website form. We schedule a consultation and discuss project requirements.</p>
+      </div>
+      <div class="faq-item">
+        <p class="faq-question">Do you work internationally?</p>
+        <p class="faq-answer">Yes, we operate across Africa, Europe, Asia, and North America, connecting global talent with opportunities.</p>
+      </div>
+      <div class="faq-item">
+        <p class="faq-question">What industries do you specialize in?</p>
+        <p class="faq-answer">We specialize in technology, marketing, creative operations, logistics, and corporate strategy.</p>
+      </div>
+    </div>
+  </section>
+
   <!-- Contact -->
   <section id="contact" class="text-center py-20 px-6">
     <h2 class="text-4xl font-bold mb-6 section-title">Contact Us</h2>
-    <p class="mb-4">Reach out via email for any inquiries, partnerships, or opportunities.</p>
-    <a href="mailto:eunicemueni1009@gmail.com" class="btn">Send Email</a>
+    <p class="mb-4">Reach out for inquiries, partnerships, or opportunities.</p>
+    <a href="mailto:eunicemueni1009@gmail.com" class="btn mb-4">Send Email</a>
+    <p>Email: <span class="text-teal-400 font-semibold">eunicemueni1009@gmail.com</span></p>
   </section>
 
   <!-- Footer -->
@@ -187,6 +222,14 @@
     const mobileMenu = document.getElementById('mobile-menu');
     menuToggle.addEventListener('click', () => {
       mobileMenu.classList.toggle('hidden');
+    });
+
+    // FAQ Toggle
+    document.querySelectorAll('.faq-question').forEach(q => {
+      q.addEventListener('click', () => {
+        const ans = q.nextElementSibling;
+        ans.style.display = ans.style.display === 'block' ? 'none' : 'block';
+      });
     });
   </script>
 </body>
