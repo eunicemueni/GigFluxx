@@ -1,237 +1,243 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Gigflux</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-  <style>
-    body { font-family: 'Poppins', sans-serif; background-color: white; color: #111; scroll-behavior: smooth; }
-    .btn { background-color: #D4AF37; color: black; padding: 0.6rem 1.2rem; border-radius: 0.5rem; font-weight: 600; transition: all 0.3s; cursor: pointer; display: inline-block; text-align: center; }
-    .btn:hover { transform: scale(1.05); box-shadow: 0 0 20px #D4AF37; }
-    .section-title { color: #14b8a6; }
-    nav a { color: #111; transition: color 0.3s; font-weight: 600; }
-    nav a:hover { color: #D4AF37; }
-    .faq-question { font-weight: 600; margin-top: 1rem; cursor: pointer; }
-    .faq-answer { display: none; margin-left: 1rem; margin-top: 0.5rem; }
-    .partners img { max-width: 120px; opacity: 0.8; transition: opacity 0.3s; }
-    .partners img:hover { opacity: 1; }
-    header, section { padding-top: 80px; }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gigflux</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+body { font-family: 'Poppins', sans-serif; background-color: white; color: #111; scroll-behavior: smooth; }
+
+/* Buttons */
+.btn { background-color: #D4AF37; color: black; padding: 0.6rem 1.2rem; border-radius: 0.5rem; font-weight: 600; cursor: pointer; display: inline-block; text-align: center; transition: all 0.3s; }
+.btn:hover { transform: translateY(-3px) scale(1.05); box-shadow: 0 0 25px #D4AF37; }
+
+/* Navbar */
+nav a { color: #111; font-weight: 600; position: relative; transition: all 0.3s; }
+nav a::after { content: ''; display: block; width: 0; height: 2px; background: #D4AF37; transition: width 0.3s; position: absolute; bottom: -4px; left: 0; }
+nav a:hover::after { width: 100%; }
+
+/* Section titles */
+.section-title { color: #14b8a6; }
+
+/* Hover cards */
+.hover-card { transition: all 0.3s ease; border-radius: 0.5rem; }
+.hover-card:hover { transform: scale(1.05) rotateX(2deg); box-shadow: 0 0 25px rgba(212,175,55,0.5); }
+
+/* Scroll fade */
+.scroll-fade { opacity: 0; transform: translateY(20px); transition: all 0.8s ease-out; }
+.scroll-fade.show { opacity: 1; transform: translateY(0); }
+
+/* Navbar spacing */
+header, section { padding-top: 80px; }
+</style>
 </head>
 <body>
 
-  <!-- Navbar -->
-  <nav class="fixed w-full bg-white z-50 shadow-md">
-    <div class="max-w-6xl mx-auto flex justify-between items-center px-6 py-4">
-      <div class="text-2xl font-bold text-teal-400">Gigflux</div>
-      <div class="space-x-6 hidden md:flex">
-        <a href="#about">About</a>
-        <a href="#services">Services</a>
-        <a href="#process">Process</a>
-        <a href="#team">Team</a>
-        <a href="#clients">Clients</a>
-        <a href="#testimonials">Testimonials</a>
-        <a href="#faq">FAQ</a>
-        <a href="#contact" class="btn">Contact</a>
-      </div>
-      <div class="md:hidden">
-        <button id="menu-toggle" class="btn">Menu</button>
-      </div>
+<!-- Navbar -->
+<nav class="fixed w-full bg-white z-50 shadow-md">
+  <div class="max-w-6xl mx-auto flex justify-between items-center px-6 py-4">
+    <div class="text-2xl font-bold text-teal-400">Gigflux</div>
+    <div class="space-x-6 hidden md:flex">
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#process">Process</a>
+      <a href="#team">Team</a>
+      <a href="#clients">Clients</a>
+      <a href="#testimonials">Testimonials</a>
+      <a href="#contact" class="btn">Contact</a>
     </div>
-  </nav>
-
-  <!-- Mobile Menu -->
-  <div id="mobile-menu" class="hidden bg-white px-6 py-4 md:hidden space-y-2">
-    <a href="#about" class="block">About</a>
-    <a href="#services" class="block">Services</a>
-    <a href="#process" class="block">Process</a>
-    <a href="#team" class="block">Team</a>
-    <a href="#clients" class="block">Clients</a>
-    <a href="#testimonials" class="block">Testimonials</a>
-    <a href="#faq" class="block">FAQ</a>
-    <a href="#contact" class="block btn">Contact</a>
+    <div class="md:hidden">
+      <button id="menu-toggle" class="btn">Menu</button>
+    </div>
   </div>
+</nav>
+<div id="mobile-menu" class="hidden bg-white px-6 py-4 md:hidden space-y-2">
+  <a href="#about" class="block">About</a>
+  <a href="#services" class="block">Services</a>
+  <a href="#process" class="block">Process</a>
+  <a href="#team" class="block">Team</a>
+  <a href="#clients" class="block">Clients</a>
+  <a href="#testimonials" class="block">Testimonials</a>
+  <a href="#contact" class="block btn">Contact</a>
+</div>
 
-  <!-- Hero Section -->
-  <section class="text-center py-32 px-6 bg-white">
-    <h1 class="text-5xl md:text-6xl font-bold text-teal-400 mb-6">We are Gigflux</h1>
-    <p class="text-xl md:text-2xl mb-8 text-gray-800">Empowering businesses and professionals worldwide through strategic workforce solutions and global partnerships.</p>
-    <div class="space-x-4">
-      <a href="#services" class="btn">Explore Opportunities</a>
-      <a href="#contact" class="btn">Join Our Network</a>
+<!-- Hero -->
+<section class="text-center py-32 px-6 scroll-fade show">
+  <h1 class="text-5xl md:text-6xl font-bold text-teal-400 mb-6">We are Gigflux</h1>
+  <p class="text-xl md:text-2xl mb-8 text-gray-800">Empowering businesses and professionals worldwide through strategic workforce solutions and global partnerships.</p>
+  <div class="space-x-4">
+    <a href="#services" class="btn">Explore Opportunities</a>
+    <a href="#contact" class="btn">Join Our Network</a>
+  </div>
+</section>
+
+<!-- About -->
+<section id="about" class="max-w-5xl mx-auto px-6 py-20 scroll-fade">
+  <h2 class="text-4xl font-bold mb-6 section-title">About Us</h2>
+  <p class="mb-4 text-gray-800">Gigflux is a global consultancy and workforce solutions agency connecting professionals and organizations for strategic growth.</p>
+  <p class="mb-4 text-gray-800">We operate in Africa, Europe, Asia, and North America, ensuring that businesses and talent are matched efficiently for maximum impact.</p>
+</section>
+
+<!-- Services -->
+<section id="services" class="max-w-6xl mx-auto px-6 py-20 scroll-fade">
+  <h2 class="text-4xl font-bold mb-10 text-teal-400">Our Services</h2>
+  <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+    <div class="hover-card p-6 bg-white shadow-md">
+      <h3 class="text-xl font-bold mb-2 text-teal-400">Strategic Talent Solutions</h3>
+      <p>Curating and placing professionals to meet organizational needs with precision and reliability.</p>
     </div>
-  </section>
-
-  <!-- About Section -->
-  <section id="about" class="max-w-5xl mx-auto px-6 py-20">
-    <h2 class="text-4xl font-bold mb-6 section-title">About Us</h2>
-    <p class="mb-4 text-gray-800">Gigflux is a global consultancy and workforce solutions agency connecting professionals and organizations for strategic growth. Our mission is to empower businesses by providing reliable, scalable, and results-driven services across industries.</p>
-    <p class="mb-4 text-gray-800">We operate in Africa, Europe, Asia, and North America, ensuring that businesses and talent are matched efficiently for maximum impact.</p>
-  </section>
-
-  <!-- Services Section -->
-  <section id="services" class="max-w-5xl mx-auto px-6 py-20">
-    <h2 class="text-4xl font-bold mb-10 section-title">Our Services</h2>
-    <div class="grid md:grid-cols-2 gap-8 text-gray-800">
-      <div class="border-l-4 border-teal-400 pl-4">
-        <h3 class="font-semibold text-xl mb-2">Strategic Talent Solutions</h3>
-        <p>Curating and placing professionals to meet organizational needs with precision and reliability.</p>
-      </div>
-      <div class="border-l-4 border-teal-400 pl-4">
-        <h3 class="font-semibold text-xl mb-2">Operational & Business Support</h3>
-        <p>Enhancing efficiency through structured project management and operational guidance.</p>
-      </div>
-      <div class="border-l-4 border-teal-400 pl-4">
-        <h3 class="font-semibold text-xl mb-2">Global Workforce Advisory</h3>
-        <p>Consulting on cross-border operations, workforce optimization, and strategic growth initiatives.</p>
-      </div>
-      <div class="border-l-4 border-teal-400 pl-4">
-        <h3 class="font-semibold text-xl mb-2">Project Execution & Oversight</h3>
-        <p>End-to-end management of complex initiatives with accountability and measurable results.</p>
-      </div>
-      <div class="border-l-4 border-teal-400 pl-4">
-        <h3 class="font-semibold text-xl mb-2">Business Process Optimization</h3>
-        <p>Streamlining workflows, improving productivity, and implementing best practices.</p>
-      </div>
-      <div class="border-l-4 border-teal-400 pl-4">
-        <h3 class="font-semibold text-xl mb-2">Market Entry & Expansion Advisory</h3>
-        <p>Guidance for organizations entering new international markets.</p>
-      </div>
-      <div class="border-l-4 border-teal-400 pl-4">
-        <h3 class="font-semibold text-xl mb-2">Corporate Training & Development</h3>
-        <p>Upskilling teams to meet evolving business demands.</p>
-      </div>
+    <div class="hover-card p-6 bg-white shadow-md">
+      <h3 class="text-xl font-bold mb-2 text-teal-400">Operational & Business Support</h3>
+      <p>Enhancing efficiency through structured project management and operational guidance.</p>
     </div>
-  </section>
-
-  <!-- How We Work Section -->
-  <section id="process" class="max-w-5xl mx-auto px-6 py-20">
-    <h2 class="text-4xl font-bold mb-8 section-title">How We Work</h2>
-    <ol class="list-decimal list-inside space-y-4 text-gray-800">
-      <li><strong>Onboarding:</strong> Talent and organizational partners join our network.</li>
-      <li><strong>Strategic Matching:</strong> Opportunities are aligned with the right expertise.</li>
-      <li><strong>Execution & Growth:</strong> Projects are delivered with oversight for measurable success.</li>
-    </ol>
-  </section>
-
-  <!-- Leadership Team -->
-  <section id="team" class="max-w-5xl mx-auto px-6 py-20">
-    <h2 class="text-4xl font-bold mb-8 section-title">Leadership Team</h2>
-    <div class="grid md:grid-cols-2 gap-8 text-gray-800">
-      <div class="border-l-4 border-gold pl-4">
-        <h3 class="text-xl font-semibold">Sarah Erwin</h3>
-        <p class="italic">Founder — USA</p>
-      </div>
-      <div class="border-l-4 border-gold pl-4">
-        <h3 class="text-xl font-semibold">Eunice Muema</h3>
-        <p class="italic">CEO — Africa</p>
-      </div>
-      <div class="border-l-4 border-gold pl-4">
-        <h3 class="text-xl font-semibold">Kulmar Elin Philipness</h3>
-        <p class="italic">Strategist — Europe</p>
-      </div>
-      <div class="border-l-4 border-gold pl-4">
-        <h3 class="text-xl font-semibold">Jack Chan</h3>
-        <p class="italic">Channel Lead — China</p>
-      </div>
-      <div class="border-l-4 border-gold pl-4">
-        <h3 class="text-xl font-semibold">Jacob Noah</h3>
-        <p class="italic">Operations Lead — North America</p>
-      </div>
+    <div class="hover-card p-6 bg-white shadow-md">
+      <h3 class="text-xl font-bold mb-2 text-teal-400">Global Workforce Advisory</h3>
+      <p>Consulting on cross-border operations, workforce optimization, and strategic growth initiatives.</p>
     </div>
-  </section>
-
-  <!-- Clients / Partners -->
-  <section id="clients" class="max-w-5xl mx-auto px-6 py-20">
-    <h2 class="text-4xl font-bold mb-8 section-title">Our Clients & Partners</h2>
-    <div class="flex flex-wrap justify-center items-center gap-12 partners">
-      <img src="https://via.placeholder.com/120x60?text=Kairah+Studios" alt="Kairah Studios">
-      <img src="https://via.placeholder.com/120x60?text=Company+X" alt="Company X">
-      <img src="https://via.placeholder.com/120x60?text=GlobalCorp" alt="GlobalCorp">
-      <img src="https://via.placeholder.com/120x60?text=Enterprise+Y" alt="Enterprise Y">
+    <div class="hover-card p-6 bg-white shadow-md">
+      <h3 class="text-xl font-bold mb-2 text-teal-400">Project Execution & Oversight</h3>
+      <p>End-to-end management of complex initiatives with accountability and measurable results.</p>
     </div>
-  </section>
-
-  <!-- Testimonials -->
-  <section id="testimonials" class="max-w-5xl mx-auto px-6 py-20">
-    <h2 class="text-4xl font-bold mb-8 section-title">Testimonials</h2>
-    <div class="grid md:grid-cols-2 gap-8 text-gray-800">
-      <div class="border-l-4 border-teal-400 pl-4">
-        <p>"Gigflux helped us scale our international operations seamlessly. Their strategic insight is unmatched."</p>
-        <p class="italic font-semibold mt-2">Sofia Martinez, Client, Europe</p>
-      </div>
-      <div class="border-l-4 border-teal-400 pl-4">
-        <p>"The team connected us with top-tier professionals for our marketing projects. Efficient and reliable."</p>
-        <p class="italic font-semibold mt-2">David Johnson, Partner, North America</p>
-      </div>
-      <div class="border-l-4 border-teal-400 pl-4">
-        <p>"Gigflux’s approach to workforce solutions transformed our recruitment and training processes."</p>
-        <p class="italic font-semibold mt-2">Li Wei, Corporate Advisor, China</p>
-      </div>
-      <div class="border-l-4 border-teal-400 pl-4">
-        <p>"Professional, structured, and results-oriented. Gigflux delivered beyond expectations on all fronts."</p>
-        <p class="italic font-semibold mt-2">Amina Abdullahi, CEO, Africa</p>
-      </div>
-      <div class="border-l-4 border-teal-400 pl-4">
-        <p>"The consultancy provided critical guidance for our market entry strategy. Exceptional expertise."</p>
-        <p class="italic font-semibold mt-2">Carlos Mendes, Director, South America</p>
-      </div>
-      <div class="border-l-4 border-teal-400 pl-4">
-        <p>"Working with Gigflux elevated our creative operations at Kairah Studios. Their strategic support is invaluable."</p>
-        <p class="italic font-semibold mt-2">Neurra Muema, Creative Director, Kairah Studios</p>
-      </div>
+    <div class="hover-card p-6 bg-white shadow-md">
+      <h3 class="text-xl font-bold mb-2 text-teal-400">Business Process Optimization</h3>
+      <p>Streamlining workflows, improving productivity, and implementing best practices.</p>
     </div>
-  </section>
+    <div class="hover-card p-6 bg-white shadow-md">
+      <h3 class="text-xl font-bold mb-2 text-teal-400">Market Entry & Expansion Advisory</h3>
+      <p>Guidance for organizations entering new international markets.</p>
+    </div>
+  </div>
+</section>
 
-  <!-- FAQ -->
-  <section id="faq" class="max-w-5xl mx-auto px-6 py-20">
-    <h2 class="text-4xl font-bold mb-8 section-title">FAQ</h2>
+<!-- Stats / Counters -->
+<section class="max-w-5xl mx-auto px-6 py-20 scroll-fade">
+  <h2 class="text-4xl font-bold mb-10 text-teal-400">Our Impact</h2>
+  <div class="grid md:grid-cols-3 gap-8 text-center">
     <div>
-      <div class="faq-item">
-        <p class="faq-question">How do we engage Gigflux for a project?</p>
-        <p class="faq-answer">Contact us via email or our website form. We schedule a consultation and discuss project requirements.</p>
-      </div>
-      <div class="faq-item">
-        <p class="faq-question">Do you work internationally?</p>
-        <p class="faq-answer">Yes, we operate across Africa, Europe, Asia, and North America, connecting global talent with opportunities.</p>
-      </div>
-      <div class="faq-item">
-        <p class="faq-question">What industries do you specialize in?</p>
-        <p class="faq-answer">We specialize in technology, marketing, creative operations, logistics, and corporate strategy.</p>
-      </div>
+      <p class="text-4xl font-bold text-gray-800" data-count="120">0</p>
+      <p class="text-gray-600">Projects Completed</p>
     </div>
-  </section>
+    <div>
+      <p class="text-4xl font-bold text-gray-800" data-count="50">0</p>
+      <p class="text-gray-600">Global Clients</p>
+    </div>
+    <div>
+      <p class="text-4xl font-bold text-gray-800" data-count="20">0</p>
+      <p class="text-gray-600">Countries Reached</p>
+    </div>
+  </div>
+</section>
 
-  <!-- Contact -->
-  <section id="contact" class="text-center py-20 px-6">
-    <h2 class="text-4xl font-bold mb-6 section-title">Contact Us</h2>
-    <p class="mb-4 text-gray-800">Reach out for inquiries, partnerships, or opportunities.</p>
-    <a href="mailto:eunicemueni1009@gmail.com" class="btn mb-4">Send Email</a>
-    <p>Email: <span class="text-teal-400 font-semibold">eunicemueni1009@gmail.com</span></p>
-  </section>
+<!-- Graph / Chart -->
+<section class="max-w-5xl mx-auto px-6 py-20 scroll-fade">
+  <h2 class="text-4xl font-bold mb-10 section-title">Global Talent Placements</h2>
+  <canvas id="placementChart" width="400" height="200"></canvas>
+</section>
 
-  <!-- Footer -->
-  <footer class="py-6 text-center text-gray-800 bg-white border-t border-gray-200">
-    © 2025 Gigflux. All rights reserved.
-  </footer>
+<!-- Testimonials -->
+<section id="testimonials" class="max-w-6xl mx-auto px-6 py-20 scroll-fade">
+  <h2 class="text-4xl font-bold mb-10 text-teal-400">Testimonials</h2>
+  <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+    <div class="hover-card p-6 bg-white shadow-md">
+      <p>"Gigflux helped us scale our international operations seamlessly. Their strategic insight is unmatched."</p>
+      <p class="mt-4 font-semibold text-teal-400">Sofia Martinez, Client, Europe</p>
+    </div>
+    <div class="hover-card p-6 bg-white shadow-md">
+      <p>"The team connected us with top-tier professionals for our marketing projects. Efficient and reliable."</p>
+      <p class="mt-4 font-semibold text-teal-400">David Johnson, Partner, North America</p>
+    </div>
+    <div class="hover-card p-6 bg-white shadow-md">
+      <p>"Working with Gigflux elevated our creative operations at Kairah Studios. Their strategic support is invaluable."</p>
+      <p class="mt-4 font-semibold text-teal-400">Neurra Muema, Creative Director, Kairah Studios</p>
+    </div>
+    <div class="hover-card p-6 bg-white shadow-md">
+      <p>"Gigflux’s approach to workforce solutions transformed our recruitment and training processes."</p>
+      <p class="mt-4 font-semibold text-teal-400">Li Wei, Corporate Advisor, China</p>
+    </div>
+    <div class="hover-card p-6 bg-white shadow-md">
+      <p>"Professional, structured, and results-oriented. Gigflux delivered beyond expectations on all fronts."</p>
+      <p class="mt-4 font-semibold text-teal-400">Amina Abdullahi, CEO, Africa</p>
+    </div>
+    <div class="hover-card p-6 bg-white shadow-md">
+      <p>"The consultancy provided critical guidance for our market entry strategy. Exceptional expertise."</p>
+      <p class="mt-4 font-semibold text-teal-400">Carlos Mendes, Director, South America</p>
+    </div>
+  </div>
+</section>
 
-  <script>
-    // Mobile Menu Toggle
-    const menuToggle = document.getElementById('menu-toggle');
-    const mobileMenu = document.getElementById('mobile-menu');
-    menuToggle.addEventListener('click', () => {
-      mobileMenu.classList.toggle('hidden');
+<!-- Contact -->
+<section id="contact" class="text-center py-20 px-6 scroll-fade">
+  <h2 class="text-4xl font-bold mb-6 section-title">Contact Us</h2>
+  <p class="mb-4 text-gray-800">Reach out for inquiries, partnerships, or opportunities.</p>
+  <a href="mailto:eunicemueni1009@gmail.com" class="btn mb-4">Send Email</a>
+  <p>Email: <span class="text-teal-400 font-semibold">eunicemueni1009@gmail.com</span></p>
+</section>
+
+<script>
+  // Mobile Menu
+  const menuToggle = document.getElementById('menu-toggle');
+  const mobileMenu = document.getElementById('mobile-menu');
+  menuToggle.addEventListener('click', () => { mobileMenu.classList.toggle('hidden'); });
+
+  // Scroll fade-in
+  const faders = document.querySelectorAll('.scroll-fade');
+  const appearOptions = { threshold: 0.2 };
+  const appearOnScroll = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      entry.target.classList.add('show');
+      observer.unobserve(entry.target);
     });
+  }, appearOptions);
+  faders.forEach(fader => appearOnScroll.observe(fader));
 
-    // FAQ Toggle
-    document.querySelectorAll('.faq-question').forEach(q => {
-      q.addEventListener('click', () => {
-        const ans = q.nextElementSibling;
-        ans.style.display = ans.style.display === 'block' ? 'none' : 'block';
+  // Counters
+  const counters = document.querySelectorAll('[data-count]');
+  counters.forEach(counter => {
+    const updateCount = () => {
+      const target = +counter.getAttribute('data-count');
+      const count = +counter.innerText;
+      const increment = target / 200;
+      if (count < target) {
+        counter.innerText = Math.ceil(count + increment);
+        setTimeout(updateCount, 15);
+      } else counter.innerText = target;
+    };
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          updateCount();
+          observer.unobserve(counter);
+        }
       });
-    });
-  </script>
+    }, { threshold: 0.5 });
+    observer.observe(counter);
+  });
+
+  // Chart.js Graph
+  const ctx = document.getElementById('placementChart').getContext('2d');
+  new Chart(ctx, {
+      type: 'bar',
+      data: {
+          labels: ['Africa', 'Europe', 'Asia', 'North America'],
+          datasets: [{
+              label: 'Talent Placements',
+              data: [120, 95, 140, 110],
+              backgroundColor: ['#14b8a6', '#D4AF37', '#14b8a6', '#D4AF37'],
+              borderRadius: 5
+          }]
+      },
+      options: {
+          responsive: true,
+          plugins: { legend: { display: false } },
+          scales: { y: { beginAtZero: true } },
+          animation: { duration: 2000, easing: 'easeOutQuart' }
+      }
+  });
+</script>
+
 </body>
 </html>
