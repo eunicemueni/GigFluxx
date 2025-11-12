@@ -8,7 +8,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <style>
-body { font-family: 'Poppins', sans-serif; background-color: white; color: #111; scroll-behavior: smooth; }
+body { font-family: 'Poppins', sans-serif; background-color: white; color: #111; scroll-behavior: smooth; margin:0; }
 
 /* Buttons */
 .btn { background-color: #D4AF37; color: black; padding: 0.6rem 1.2rem; border-radius: 0.5rem; font-weight: 600; cursor: pointer; display: inline-block; text-align: center; transition: all 0.3s; }
@@ -30,7 +30,23 @@ nav a:hover::after { width: 100%; }
 .scroll-fade { opacity: 0; transform: translateY(20px); transition: all 0.8s ease-out; }
 .scroll-fade.show { opacity: 1; transform: translateY(0); }
 
-/* Navbar spacing */
+/* Animated cards */
+.animated-card { opacity: 0; transform: translateY(30px); transition: all 0.6s ease-out; }
+.animated-card.show { opacity: 1; transform: translateY(0); }
+
+/* Pitch Banner */
+#pitch-banner { transform: translateX(150%); opacity: 0; transition: transform 0.8s ease-out, opacity 0.8s ease-out; }
+#pitch-banner.show { transform: translateX(0); opacity: 1; }
+
+/* Hero animation */
+.blinking-cursor { font-weight: 700; font-size: 2.5rem; color: #14b8a6; animation: blink 1s infinite; }
+@keyframes blink { 0%,50%,100% {opacity:1;} 25%,75% {opacity:0;} }
+
+.floating-circle { position: absolute; width: 40px; height: 40px; background-color: #D4AF37; border-radius: 50%; opacity: 0.3; animation: float 6s ease-in-out infinite alternate; }
+.floating-circle:nth-child(2) { animation-delay:1s; }
+.floating-circle:nth-child(3) { animation-delay:2s; }
+@keyframes float { 0% { transform: translateY(0px) translateX(0px);} 50% { transform: translateY(-20px) translateX(10px);} 100% { transform: translateY(0px) translateX(0px);} }
+
 header, section { padding-top: 80px; }
 </style>
 </head>
@@ -65,12 +81,20 @@ header, section { padding-top: 80px; }
 </div>
 
 <!-- Hero -->
-<section class="text-center py-32 px-6 scroll-fade show">
-  <h1 class="text-5xl md:text-6xl font-bold text-teal-400 mb-6">We are Gigflux</h1>
-  <p class="text-xl md:text-2xl mb-8 text-gray-800">Empowering businesses and professionals worldwide through strategic workforce solutions and global partnerships.</p>
-  <div class="space-x-4">
+<section class="relative text-center py-32 px-6 scroll-fade show">
+  <!-- Floating circles -->
+  <div class="absolute top-0 left-0 w-full h-full overflow-hidden z-0">
+    <span class="floating-circle"></span>
+    <span class="floating-circle" style="left:30%; top:60%; width:50px; height:50px;"></span>
+    <span class="floating-circle" style="left:70%; top:30%; width:70px; height:70px;"></span>
+  </div>
+  <h1 class="text-5xl md:text-6xl font-bold text-teal-400 mb-6 relative z-10">
+    <span id="typed-text"></span><span class="blinking-cursor">|</span>
+  </h1>
+  <p class="text-xl md:text-2xl mb-8 text-gray-800 relative z-10">Empowering businesses and professionals worldwide through strategic workforce solutions and global partnerships.</p>
+  <div class="space-x-4 relative z-10">
     <a href="#services" class="btn">Explore Opportunities</a>
-    <a href="#contact" class="btn">Join Our Network</a>
+    <a href="mailto:eunicemueni1009@gmail.com" class="btn">Join Our Network</a>
   </div>
 </section>
 
@@ -85,27 +109,27 @@ header, section { padding-top: 80px; }
 <section id="services" class="max-w-6xl mx-auto px-6 py-20 scroll-fade">
   <h2 class="text-4xl font-bold mb-10 text-teal-400">Our Services</h2>
   <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-    <div class="hover-card p-6 bg-white shadow-md">
+    <div class="hover-card animated-card p-6 bg-white shadow-md">
       <h3 class="text-xl font-bold mb-2 text-teal-400">Strategic Talent Solutions</h3>
       <p>Curating and placing professionals to meet organizational needs with precision and reliability.</p>
     </div>
-    <div class="hover-card p-6 bg-white shadow-md">
+    <div class="hover-card animated-card p-6 bg-white shadow-md">
       <h3 class="text-xl font-bold mb-2 text-teal-400">Operational & Business Support</h3>
       <p>Enhancing efficiency through structured project management and operational guidance.</p>
     </div>
-    <div class="hover-card p-6 bg-white shadow-md">
+    <div class="hover-card animated-card p-6 bg-white shadow-md">
       <h3 class="text-xl font-bold mb-2 text-teal-400">Global Workforce Advisory</h3>
       <p>Consulting on cross-border operations, workforce optimization, and strategic growth initiatives.</p>
     </div>
-    <div class="hover-card p-6 bg-white shadow-md">
+    <div class="hover-card animated-card p-6 bg-white shadow-md">
       <h3 class="text-xl font-bold mb-2 text-teal-400">Project Execution & Oversight</h3>
       <p>End-to-end management of complex initiatives with accountability and measurable results.</p>
     </div>
-    <div class="hover-card p-6 bg-white shadow-md">
+    <div class="hover-card animated-card p-6 bg-white shadow-md">
       <h3 class="text-xl font-bold mb-2 text-teal-400">Business Process Optimization</h3>
       <p>Streamlining workflows, improving productivity, and implementing best practices.</p>
     </div>
-    <div class="hover-card p-6 bg-white shadow-md">
+    <div class="hover-card animated-card p-6 bg-white shadow-md">
       <h3 class="text-xl font-bold mb-2 text-teal-400">Market Entry & Expansion Advisory</h3>
       <p>Guidance for organizations entering new international markets.</p>
     </div>
@@ -141,27 +165,27 @@ header, section { padding-top: 80px; }
 <section id="testimonials" class="max-w-6xl mx-auto px-6 py-20 scroll-fade">
   <h2 class="text-4xl font-bold mb-10 text-teal-400">Testimonials</h2>
   <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-    <div class="hover-card p-6 bg-white shadow-md">
+    <div class="hover-card animated-card p-6 bg-white shadow-md">
       <p>"Gigflux helped us scale our international operations seamlessly. Their strategic insight is unmatched."</p>
       <p class="mt-4 font-semibold text-teal-400">Sofia Martinez, Client, Europe</p>
     </div>
-    <div class="hover-card p-6 bg-white shadow-md">
+    <div class="hover-card animated-card p-6 bg-white shadow-md">
       <p>"The team connected us with top-tier professionals for our marketing projects. Efficient and reliable."</p>
       <p class="mt-4 font-semibold text-teal-400">David Johnson, Partner, North America</p>
     </div>
-    <div class="hover-card p-6 bg-white shadow-md">
+    <div class="hover-card animated-card p-6 bg-white shadow-md">
       <p>"Working with Gigflux elevated our creative operations at Kairah Studios. Their strategic support is invaluable."</p>
       <p class="mt-4 font-semibold text-teal-400">Neurra Muema, Creative Director, Kairah Studios</p>
     </div>
-    <div class="hover-card p-6 bg-white shadow-md">
+    <div class="hover-card animated-card p-6 bg-white shadow-md">
       <p>"Gigflux’s approach to workforce solutions transformed our recruitment and training processes."</p>
       <p class="mt-4 font-semibold text-teal-400">Li Wei, Corporate Advisor, China</p>
     </div>
-    <div class="hover-card p-6 bg-white shadow-md">
+    <div class="hover-card animated-card p-6 bg-white shadow-md">
       <p>"Professional, structured, and results-oriented. Gigflux delivered beyond expectations on all fronts."</p>
       <p class="mt-4 font-semibold text-teal-400">Amina Abdullahi, CEO, Africa</p>
     </div>
-    <div class="hover-card p-6 bg-white shadow-md">
+    <div class="hover-card animated-card p-6 bg-white shadow-md">
       <p>"The consultancy provided critical guidance for our market entry strategy. Exceptional expertise."</p>
       <p class="mt-4 font-semibold text-teal-400">Carlos Mendes, Director, South America</p>
     </div>
@@ -176,6 +200,16 @@ header, section { padding-top: 80px; }
   <p>Email: <span class="text-teal-400 font-semibold">eunicemueni1009@gmail.com</span></p>
 </section>
 
+<!-- Floating Pitch Banner -->
+<div id="pitch-banner" class="fixed bottom-6 right-6 bg-teal-400 text-white px-6 py-4 rounded-lg shadow-lg flex items-center space-x-4 hover:scale-105 transition-transform cursor-pointer z-50">
+  <div>
+    <p class="font-semibold">Have a project? Let's collaborate!</p>
+    <p class="text-sm">Email us directly at <span class="underline">eunicemueni1009@gmail.com</span></p>
+  </div>
+  <a href="mailto:eunicemueni1009@gmail.com" class="btn bg-white text-teal-400 hover:bg-gray-100">Email Now</a>
+  <button id="close-banner" class="ml-4 text-white font-bold text-lg hover:text-gray-200">&times;</button>
+</div>
+
 <script>
   // Mobile Menu
   const menuToggle = document.getElementById('menu-toggle');
@@ -186,13 +220,16 @@ header, section { padding-top: 80px; }
   const faders = document.querySelectorAll('.scroll-fade');
   const appearOptions = { threshold: 0.2 };
   const appearOnScroll = new IntersectionObserver((entries, observer) => {
-    entries.forEach(entry => {
-      if (!entry.isIntersecting) return;
-      entry.target.classList.add('show');
-      observer.unobserve(entry.target);
-    });
+    entries.forEach(entry => { if(entry.isIntersecting){ entry.target.classList.add('show'); observer.unobserve(entry.target); }});
   }, appearOptions);
   faders.forEach(fader => appearOnScroll.observe(fader));
+
+  // Animated Cards
+  const animatedCards = document.querySelectorAll('.animated-card');
+  const cardObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => { if(entry.isIntersecting){ entry.target.classList.add('show'); observer.unobserve(entry.target); }});
+  }, { threshold: 0.3 });
+  animatedCards.forEach(card => cardObserver.observe(card));
 
   // Counters
   const counters = document.querySelectorAll('[data-count]');
@@ -201,42 +238,29 @@ header, section { padding-top: 80px; }
       const target = +counter.getAttribute('data-count');
       const count = +counter.innerText;
       const increment = target / 200;
-      if (count < target) {
-        counter.innerText = Math.ceil(count + increment);
-        setTimeout(updateCount, 15);
-      } else counter.innerText = target;
+      if(count < target){ counter.innerText = Math.ceil(count+increment); requestAnimationFrame(updateCount);} else counter.innerText=target;
     };
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if(entry.isIntersecting){
-          updateCount();
-          observer.unobserve(counter);
-        }
-      });
-    }, { threshold: 0.5 });
+    const observer = new IntersectionObserver(entries => { entries.forEach(entry => { if(entry.isIntersecting){ updateCount(); observer.unobserve(counter); } });}, { threshold:0.5 });
     observer.observe(counter);
   });
 
   // Chart.js Graph
   const ctx = document.getElementById('placementChart').getContext('2d');
-  new Chart(ctx, {
-      type: 'bar',
-      data: {
-          labels: ['Africa', 'Europe', 'Asia', 'North America'],
-          datasets: [{
-              label: 'Talent Placements',
-              data: [120, 95, 140, 110],
-              backgroundColor: ['#14b8a6', '#D4AF37', '#14b8a6', '#D4AF37'],
-              borderRadius: 5
-          }]
-      },
-      options: {
-          responsive: true,
-          plugins: { legend: { display: false } },
-          scales: { y: { beginAtZero: true } },
-          animation: { duration: 2000, easing: 'easeOutQuart' }
-      }
-  });
+  new Chart(ctx,{type:'bar',data:{labels:['Africa','Europe','Asia','North America'],datasets:[{label:'Talent Placements',data:[120,95,140,110],backgroundColor:['#14b8a6','#D4AF37','#14b8a6','#D4AF37'],borderRadius:5}]},options:{responsive:true,plugins:{legend:{display:false}},scales:{y:{beginAtZero:true}},animation:{duration:2000,easing:'easeOutQuart'}}});
+
+  // Floating Pitch Banner
+  const banner = document.getElementById('pitch-banner');
+  const closeBtn = document.getElementById('close-banner');
+  window.addEventListener('load', () => { setTimeout(()=>{banner.classList.add('show');},500); });
+  closeBtn.addEventListener('click', (e)=>{ e.stopPropagation(); banner.style.display='none'; });
+  banner.addEventListener('click', ()=>{ window.location.href='mailto:eunicemueni1009@gmail.com'; });
+
+  // Hero typing
+  const text = "We are Gigflux – Empowering global talent & businesses.";
+  const typedText = document.getElementById('typed-text');
+  let index = 0;
+  function type(){ if(index < text.length){ typedText.innerHTML+=text.charAt(index); index++; setTimeout(type,80); } }
+  window.addEventListener('load', type);
 </script>
 
 </body>
