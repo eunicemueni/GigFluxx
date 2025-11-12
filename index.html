@@ -1,0 +1,127 @@
+// src/App.jsx
+import React from "react";
+
+const team = [
+  { name: "Sarah Erwin", role: "Founder", region: "USA" },
+  { name: "Eunice Muema", role: "CEO", region: "Africa" },
+  { name: "Kulmar Elin Philipness", role: "Strategist", region: "Europe" },
+  { name: "Jack Chan", role: "Channel Lead", region: "China" },
+  { name: "Jacob Noah", role: "Operations Lead", region: "North America" },
+];
+
+const testimonials = [
+  { text: "Gigflux helped us scale our international operations seamlessly. Their strategic insight is unmatched.", author: "Sofia Martinez, Client, Europe" },
+  { text: "The team connected us with top-tier professionals for our marketing projects. Efficient and reliable.", author: "David Johnson, Partner, North America" },
+  { text: "Gigflux’s approach to workforce solutions transformed our recruitment and training processes.", author: "Li Wei, Corporate Advisor, China" },
+  { text: "Professional, structured, and results-oriented. Gigflux delivered beyond expectations on all fronts.", author: "Amina Abdullahi, CEO, Africa" },
+  { text: "The consultancy provided critical guidance for our market entry strategy. Exceptional expertise.", author: "Carlos Mendes, Director, South America" },
+  { text: "Working with Gigflux elevated our creative operations at Kairah Studios. Their strategic support is invaluable.", author: "Neurra Muema, Creative Director, Kairah Studios" },
+];
+
+function App() {
+  return (
+    <div className="font-sans text-gray-900">
+      {/* Hero Section */}
+      <section className="bg-white text-teal-700 px-6 py-20 text-center">
+        <h1 className="text-4xl font-bold mb-4">We are Gigflux</h1>
+        <p className="text-lg mb-6">Empowering businesses and professionals worldwide through strategic workforce solutions and global partnerships.</p>
+        <div className="space-x-4">
+          <a href="#services" className="px-6 py-3 bg-teal-700 text-white font-semibold rounded hover:bg-teal-800">Explore Opportunities</a>
+          <a href="#contact" className="px-6 py-3 border-2 border-teal-700 text-teal-700 font-semibold rounded hover:bg-teal-700 hover:text-white">Join Our Network</a>
+        </div>
+      </section>
+
+      {/* About Section */}
+      <section id="about" className="px-6 py-20 bg-white text-teal-900 max-w-5xl mx-auto">
+        <h2 className="text-3xl font-bold mb-4">About Us</h2>
+        <p className="mb-4">At Gigflux, we bridge the gap between skilled professionals and organizations seeking excellence. Our mission is to deliver strategic, scalable, and reliable solutions that empower growth, optimize operations, and foster meaningful collaborations across industries.</p>
+        <p>With a global presence spanning Africa, Europe, Asia, and North America, we combine expertise and insight to connect talent with the right opportunities, wherever they are needed.</p>
+      </section>
+
+      {/* Services Section */}
+      <section id="services" className="px-6 py-20 bg-white text-teal-900 max-w-5xl mx-auto">
+        <h2 className="text-3xl font-bold mb-8">Our Services</h2>
+        <div className="grid md:grid-cols-2 gap-8">
+          <div className="border-l-4 border-teal-700 pl-4">
+            <h3 className="font-semibold text-xl mb-2">Strategic Talent Solutions</h3>
+            <p>Curating and placing professionals to meet organizational needs with precision and reliability.</p>
+          </div>
+          <div className="border-l-4 border-teal-700 pl-4">
+            <h3 className="font-semibold text-xl mb-2">Operational & Business Support</h3>
+            <p>Enhancing efficiency through structured project management and operational guidance.</p>
+          </div>
+          <div className="border-l-4 border-teal-700 pl-4">
+            <h3 className="font-semibold text-xl mb-2">Global Workforce Advisory</h3>
+            <p>Consulting on cross-border operations, workforce optimization, and strategic growth initiatives.</p>
+          </div>
+          <div className="border-l-4 border-teal-700 pl-4">
+            <h3 className="font-semibold text-xl mb-2">Project Execution & Oversight</h3>
+            <p>End-to-end management of complex initiatives with accountability and measurable results.</p>
+          </div>
+          <div className="border-l-4 border-teal-700 pl-4">
+            <h3 className="font-semibold text-xl mb-2">Business Process Optimization</h3>
+            <p>Streamlining workflows, improving productivity, and implementing best practices.</p>
+          </div>
+          <div className="border-l-4 border-teal-700 pl-4">
+            <h3 className="font-semibold text-xl mb-2">Market Entry & Expansion Advisory</h3>
+            <p>Guidance for organizations entering new international markets.</p>
+          </div>
+          <div className="border-l-4 border-teal-700 pl-4">
+            <h3 className="font-semibold text-xl mb-2">Corporate Training & Development</h3>
+            <p>Upskilling teams to meet evolving business demands.</p>
+          </div>
+        </div>
+      </section>
+
+      {/* How We Work Section */}
+      <section id="process" className="px-6 py-20 bg-white text-teal-900 max-w-5xl mx-auto">
+        <h2 className="text-3xl font-bold mb-8">How We Work</h2>
+        <ol className="list-decimal list-inside space-y-4">
+          <li><strong>Onboarding:</strong> Talent and organizational partners join our network.</li>
+          <li><strong>Strategic Matching:</strong> Our team aligns opportunities with the right expertise.</li>
+          <li><strong>Execution & Growth:</strong> Projects are delivered with oversight, ensuring success and lasting impact.</li>
+        </ol>
+      </section>
+
+      {/* Leadership Team Section */}
+      <section id="team" className="px-6 py-20 bg-white text-teal-900 max-w-5xl mx-auto">
+        <h2 className="text-3xl font-bold mb-8">Leadership Team</h2>
+        <div className="grid md:grid-cols-2 gap-8">
+          {team.map((member, index) => (
+            <div key={index} className="border-l-4 border-gold pl-4">
+              <h3 className="text-xl font-semibold">{member.name}</h3>
+              <p className="italic">{member.role} — {member.region}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Testimonials Section */}
+      <section id="testimonials" className="px-6 py-20 bg-white text-teal-900 max-w-5xl mx-auto">
+        <h2 className="text-3xl font-bold mb-8">Testimonials</h2>
+        <div className="grid md:grid-cols-2 gap-8">
+          {testimonials.map((t, index) => (
+            <div key={index} className="border-l-4 border-teal-700 pl-4">
+              <p className="mb-2">&quot;{t.text}&quot;</p>
+              <p className="italic font-semibold">{t.author}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Contact Section */}
+      <section id="contact" className="px-6 py-20 bg-white text-teal-900 max-w-5xl mx-auto">
+        <h2 className="text-3xl font-bold mb-6">Contact Us</h2>
+        <p className="mb-4">Reach out to the Gigflux team via email for any inquiries, partnerships, or opportunities.</p>
+        <a href="mailto:eunicemueni1009@gmail.com" className="px-6 py-3 bg-teal-700 text-white font-semibold rounded hover:bg-teal-800">Send Email</a>
+      </section>
+
+      {/* Footer */}
+      <footer className="px-6 py-6 bg-teal-700 text-white text-center">
+        © {new Date().getFullYear()} Gigflux. All rights reserved.
+      </footer>
+    </div>
+  );
+}
+
+export default App;
