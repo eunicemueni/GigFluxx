@@ -7,22 +7,23 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
-    body { font-family: 'Poppins', sans-serif; background-color: #1a1424; color: white; scroll-behavior: smooth; }
+    body { font-family: 'Poppins', sans-serif; background-color: white; color: #111; scroll-behavior: smooth; }
     .btn { background-color: #D4AF37; color: black; padding: 0.6rem 1.2rem; border-radius: 0.5rem; font-weight: 600; transition: all 0.3s; cursor: pointer; display: inline-block; text-align: center; }
     .btn:hover { transform: scale(1.05); box-shadow: 0 0 20px #D4AF37; }
     .section-title { color: #14b8a6; }
-    nav a { transition: color 0.3s; }
+    nav a { color: #111; transition: color 0.3s; font-weight: 600; }
     nav a:hover { color: #D4AF37; }
     .faq-question { font-weight: 600; margin-top: 1rem; cursor: pointer; }
     .faq-answer { display: none; margin-left: 1rem; margin-top: 0.5rem; }
     .partners img { max-width: 120px; opacity: 0.8; transition: opacity 0.3s; }
     .partners img:hover { opacity: 1; }
+    header, section { padding-top: 80px; }
   </style>
 </head>
 <body>
 
   <!-- Navbar -->
-  <nav class="fixed w-full bg-[#1a1424] z-50 shadow-md">
+  <nav class="fixed w-full bg-white z-50 shadow-md">
     <div class="max-w-6xl mx-auto flex justify-between items-center px-6 py-4">
       <div class="text-2xl font-bold text-teal-400">Gigflux</div>
       <div class="space-x-6 hidden md:flex">
@@ -42,7 +43,7 @@
   </nav>
 
   <!-- Mobile Menu -->
-  <div id="mobile-menu" class="hidden bg-[#1a1424] px-6 py-4 md:hidden space-y-2">
+  <div id="mobile-menu" class="hidden bg-white px-6 py-4 md:hidden space-y-2">
     <a href="#about" class="block">About</a>
     <a href="#services" class="block">Services</a>
     <a href="#process" class="block">Process</a>
@@ -54,9 +55,9 @@
   </div>
 
   <!-- Hero Section -->
-  <section class="text-center py-32 px-6 bg-gradient-to-b from-[#1a1424] to-[#11101b]">
+  <section class="text-center py-32 px-6 bg-white">
     <h1 class="text-5xl md:text-6xl font-bold text-teal-400 mb-6">We are Gigflux</h1>
-    <p class="text-xl md:text-2xl mb-8">Empowering businesses and professionals worldwide through strategic workforce solutions and global partnerships.</p>
+    <p class="text-xl md:text-2xl mb-8 text-gray-800">Empowering businesses and professionals worldwide through strategic workforce solutions and global partnerships.</p>
     <div class="space-x-4">
       <a href="#services" class="btn">Explore Opportunities</a>
       <a href="#contact" class="btn">Join Our Network</a>
@@ -66,14 +67,14 @@
   <!-- About Section -->
   <section id="about" class="max-w-5xl mx-auto px-6 py-20">
     <h2 class="text-4xl font-bold mb-6 section-title">About Us</h2>
-    <p class="mb-4">Gigflux is a global consultancy and workforce solutions agency connecting professionals and organizations for strategic growth. Our mission is to empower businesses by providing reliable, scalable, and results-driven services across industries.</p>
-    <p class="mb-4">We operate in Africa, Europe, Asia, and North America, ensuring that businesses and talent are matched efficiently for maximum impact.</p>
+    <p class="mb-4 text-gray-800">Gigflux is a global consultancy and workforce solutions agency connecting professionals and organizations for strategic growth. Our mission is to empower businesses by providing reliable, scalable, and results-driven services across industries.</p>
+    <p class="mb-4 text-gray-800">We operate in Africa, Europe, Asia, and North America, ensuring that businesses and talent are matched efficiently for maximum impact.</p>
   </section>
 
   <!-- Services Section -->
   <section id="services" class="max-w-5xl mx-auto px-6 py-20">
     <h2 class="text-4xl font-bold mb-10 section-title">Our Services</h2>
-    <div class="grid md:grid-cols-2 gap-8">
+    <div class="grid md:grid-cols-2 gap-8 text-gray-800">
       <div class="border-l-4 border-teal-400 pl-4">
         <h3 class="font-semibold text-xl mb-2">Strategic Talent Solutions</h3>
         <p>Curating and placing professionals to meet organizational needs with precision and reliability.</p>
@@ -108,7 +109,7 @@
   <!-- How We Work Section -->
   <section id="process" class="max-w-5xl mx-auto px-6 py-20">
     <h2 class="text-4xl font-bold mb-8 section-title">How We Work</h2>
-    <ol class="list-decimal list-inside space-y-4">
+    <ol class="list-decimal list-inside space-y-4 text-gray-800">
       <li><strong>Onboarding:</strong> Talent and organizational partners join our network.</li>
       <li><strong>Strategic Matching:</strong> Opportunities are aligned with the right expertise.</li>
       <li><strong>Execution & Growth:</strong> Projects are delivered with oversight for measurable success.</li>
@@ -118,7 +119,7 @@
   <!-- Leadership Team -->
   <section id="team" class="max-w-5xl mx-auto px-6 py-20">
     <h2 class="text-4xl font-bold mb-8 section-title">Leadership Team</h2>
-    <div class="grid md:grid-cols-2 gap-8">
+    <div class="grid md:grid-cols-2 gap-8 text-gray-800">
       <div class="border-l-4 border-gold pl-4">
         <h3 class="text-xl font-semibold">Sarah Erwin</h3>
         <p class="italic">Founder — USA</p>
@@ -156,7 +157,7 @@
   <!-- Testimonials -->
   <section id="testimonials" class="max-w-5xl mx-auto px-6 py-20">
     <h2 class="text-4xl font-bold mb-8 section-title">Testimonials</h2>
-    <div class="grid md:grid-cols-2 gap-8">
+    <div class="grid md:grid-cols-2 gap-8 text-gray-800">
       <div class="border-l-4 border-teal-400 pl-4">
         <p>"Gigflux helped us scale our international operations seamlessly. Their strategic insight is unmatched."</p>
         <p class="italic font-semibold mt-2">Sofia Martinez, Client, Europe</p>
@@ -206,13 +207,13 @@
   <!-- Contact -->
   <section id="contact" class="text-center py-20 px-6">
     <h2 class="text-4xl font-bold mb-6 section-title">Contact Us</h2>
-    <p class="mb-4">Reach out for inquiries, partnerships, or opportunities.</p>
+    <p class="mb-4 text-gray-800">Reach out for inquiries, partnerships, or opportunities.</p>
     <a href="mailto:eunicemueni1009@gmail.com" class="btn mb-4">Send Email</a>
     <p>Email: <span class="text-teal-400 font-semibold">eunicemueni1009@gmail.com</span></p>
   </section>
 
   <!-- Footer -->
-  <footer class="py-6 text-center text-white bg-[#11101b]">
+  <footer class="py-6 text-center text-gray-800 bg-white border-t border-gray-200">
     © 2025 Gigflux. All rights reserved.
   </footer>
 
